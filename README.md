@@ -8,5 +8,5 @@ Teams job-related networking (linkedin, github)
 - [x] create table that represents the final design and structure(minim 2 persons)
 - [x] Table headers ->[firstName, lastName, links{github, linkedin}]
 - [x] hint - TABLE - THEAD & TBODY & TFOOT tags
-- [ ] remove 2 example persons and load them from js
-- [ ] load team.json and render them in page
+- [x] remove 2 example persons and load them from js
+- [x] load team.json and render them in page
