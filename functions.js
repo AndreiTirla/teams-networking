@@ -28,8 +28,10 @@ function searchPersons(text) {
   text = text.toLowerCase();
   console.warn("search", text);
   return allPersons.filter((person) => {
-    console.info({ person });
-    return person.firstName.toLowerCase().indexOf(text) > -1;
+    return (
+      person.firstName.toLowerCase().indexOf(text) > -1 ||
+      person.lastName.toLowerCase().indexOf(text) > -1
+    );
   });
 }
 
