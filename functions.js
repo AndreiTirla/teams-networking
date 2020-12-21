@@ -15,8 +15,27 @@ function getPersonHtml(person) {
         </tr>`;
 }
 
+let allPersons = [];
+
 fetch("team.json")
   .then((r) => r.json())
   .then((data) => {
+    allPersons = data;
     insertPersons(data);
   });
+
+function searchPersons(text) {
+  console.warn("search", text);
+  return allPersons.filter((person) => {
+    console.info({ person });
+    return person.firstName.indexOf(text) > -1;
+  });
+}
+
+const search = document.getElementById("search");
+search.addEventListener("input", (e) => {
+  const text = e.target.value;
+  const filtrate = searchPersons(text);
+
+  insertPersons(filtrate);
+});
