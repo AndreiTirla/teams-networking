@@ -3,11 +3,7 @@ function insertPersons(data) {
   tbody.innerHTML = personsHTML(data);
 }
 function personsHTML(persons) {
-  return persons
-    .map((person) => {
-      return getPersonHtml(person);
-    })
-    .join("");
+  return persons.map(getPersonHtml).join("");
 }
 
 function getPersonHtml(person) {
