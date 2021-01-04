@@ -12,8 +12,8 @@ const API = {
     METHOD: "GET",
   },
   DELETE: {
-    URL: "",
-    METHOD: "GET",
+    URL: "delete.json",
+    METHOD: "GET", //DELETE
   },
 };
 
@@ -31,7 +31,9 @@ function getPersonHtml(person) {
         <td>${person.firstName}</td>
         <td>${person.lastName}</td>
         <td><a target="_blank" href="https://github.com/${gitHub}">GitHub</a></td>
-        <td></td>
+        <td>
+          <a href="${API.DELETE.URL}?id=${person.id}">&#10006;</a>
+        </td>
         </tr>`;
 }
 
