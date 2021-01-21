@@ -120,13 +120,20 @@ function updateTeamMember() {
 }
 
 function deleteTeamMember(id) {
-  fetch("http://localhost:3000/teams-json/delete", {
-    method: "DELETE",
+  fetch(API.DELETE.URL, {
+    method: API.DELETE.METHOD,
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ id }),
-  });
+  })
+    .then((res) => res.json())
+    .then((r) => {
+      console.warn(r);
+      if (r.success) {
+        loadList();
+      }
+    });
 }
 
 function populateCurrentMember(id) {
