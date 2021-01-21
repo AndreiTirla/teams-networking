@@ -43,7 +43,7 @@ function getPersonHtml(person) {
 let allPersons = [];
 
 function loadList() {
-  fetch(API.READ.URL)
+  return fetch(API.READ.URL)
     .then((r) => r.json())
     .then((data) => {
       allPersons = data;
@@ -74,7 +74,7 @@ function saveTeamMember() {
   };
   console.info("saving...", person, JSON.stringify(person));
 
-  fetch(API.CREATE.URL, {
+  return fetch(API.CREATE.URL, {
     method: API.CREATE.METHOD,
     headers: {
       "Content-Type": "application/json",
@@ -85,7 +85,7 @@ function saveTeamMember() {
     .then((r) => {
       console.warn(r);
       if (r.success) {
-        loadList();
+        return loadList();
       }
     });
 }
@@ -164,7 +164,17 @@ function addEventListeners() {
     if (editId) {
       updateTeamMember();
     } else {
-      saveTeamMember();
+      saveTeamMember().then(() => {
+        const SELECTORS = [
+          "input[name=firstName]",
+          "input[name=lastName]",
+          "input[name=gitHub]",
+        ];
+        function resetInput(selector) {
+          document.querySelector(selector).value = "";
+        }
+        SELECTORS.forEach(resetInput);
+      });
     }
   });
 
