@@ -103,7 +103,7 @@ function updateTeamMember() {
   };
   console.info("updating...", person, JSON.stringify(person));
 
-  fetch(API.UPDATE.URL, {
+  return fetch(API.UPDATE.URL, {
     method: API.UPDATE.METHOD,
     headers: {
       "Content-Type": "application/json",
